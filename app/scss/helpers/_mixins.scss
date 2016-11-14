@@ -1,0 +1,37 @@
+@mixin clearfix {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $min-tablet-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $min-tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop{
+  @media (min-width: $min-desktop-width) {
+    @content;
+  }
+}
+
+@mixin desktop-container {
+  padding-left: 175px/1600px * 100%;
+  padding-right: 175px/1600px * 100%;
+}
+
+@mixin viewport-height {
+  height: 100vh;
+  min-height: 770px;
+}

@@ -1,0 +1,33 @@
+.reviews {
+  @include viewport-height;
+  display: flex;
+  align-items: center;
+  background: url('../img/reviews__background.png') no-repeat;
+  background-size: cover;
+  &__wrapper {
+    margin: 0 415px/1600px * 100%;
+    padding: 82px 74px/1600px * 100% 103px 74px/1600px * 100%;
+    background: url('../img/black-pattern.png');
+    background-size: cover;
+    text-align: center;
+    color: $white;
+  }
+  &__heading {
+    font-family: $font-family--yeseva;
+    font-size: $font-size--lg;
+    &::after {
+      background: url('../img/delimiter-3.png')
+    }
+  }
+  &__author {
+    font-family: $font-family--base;
+    font-size: 18px;
+  }
+  &__item {
+    margin-top: 60px;
+    font-family: $font-family--gentium;
+    font-size: $font-size--bg;
+    line-height: 4.5rem;
+    color: #dde0df;
+  }
+}

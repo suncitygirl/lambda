@@ -1,0 +1,55 @@
+@import "normalize";
+@import "helpers/mixins";
+@import "helpers/variables";
+@import "helpers/common-elements";
+@import "blocks/main-nav";
+@import "blocks/promo";
+@import "blocks/about";
+@import "blocks/ingredients";
+@import "blocks/menu";
+@import "blocks/reviews";
+@import "blocks/reservations";
+@import "blocks/main-footer";
+
+html {
+  font-family: $font-family--base;
+  font-size: $html-size-base;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: $font-size;
+  min-width: 320px;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

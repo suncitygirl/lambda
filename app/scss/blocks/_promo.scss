@@ -1,0 +1,52 @@
+.promo {
+  @include viewport-height;
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  background: url("../img/promo__background.png") no-repeat;
+  background-size: cover;
+  text-align: center;
+  &__slogan {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-left: 314px/1600px * 100%;
+    margin-right: 314px/1600px * 100%;
+    font-family: $font-family--yeseva;
+    font-size: 9rem;
+    color: $white;
+    text-shadow: 0.5px 0.9px 10px rgba(1, 1, 1, 0.84);
+    opacity: 0.92;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -55px;
+      left: 50%;
+      margin-left: -116px;
+      width: 232px;
+      height: 43px;
+      background: url('../img/delimiter.png') no-repeat;
+      background-size: contain;
+    }
+  }
+  &__book-btn, &__menu-btn {
+    position: absolute;
+    bottom: 15%;
+    border: solid 2px;
+    font-family: $font-family--base;
+    font-size: 1.8rem;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  &__book-btn {
+    left: 520px/1600px * 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: $black;
+  }
+  &__menu-btn {
+    right: 520px/1600px * 100%;
+    background-color: rgba(255, 255, 255, 0.28);
+  }
+}
