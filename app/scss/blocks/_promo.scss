@@ -1,5 +1,6 @@
 .promo {
     text-align: center;
+    @include viewport-height;
     &__parallax-deep {
         @include parallax-deep( '../img/promo__background.png');
     }

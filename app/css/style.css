@@ -481,7 +481,9 @@ template {
   color: #d9d9d9; }
 
 .promo {
-  text-align: center; }
+  text-align: center;
+  height: 100vh;
+  min-height: 770px; }
 
 .promo__parallax-deep {
   transform-style: preserve-3d;
@@ -586,8 +588,7 @@ template {
   border-bottom: solid #191919 6px; }
 
 .about__wrapper {
-  height: 100%;
-  min-height: 720px;
+  min-height: 75%;
   width: 25.5625%;
   margin-left: 17.8125%;
   text-align: center; }
