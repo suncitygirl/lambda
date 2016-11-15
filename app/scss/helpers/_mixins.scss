@@ -1,37 +1,74 @@
 @mixin clearfix {
-  &:before, &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
+    &:after,
+    &:before {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
 }
-
 @mixin mobile {
-  @media (max-width: $min-tablet-width) {
-    @content;
-  }
+     @media (max-width: $min-tablet-width){
+        @content;
+    }
 }
-
 @mixin tablet {
-  @media (min-width: $min-tablet-width) {
-    @content;
-  }
+     @media (min-width: $min-tablet-width){
+        @content;
+    }
 }
-
-@mixin desktop{
-  @media (min-width: $min-desktop-width) {
-    @content;
-  }
+@mixin desktop {
+     @media (min-width: $min-desktop-width){
+        @content;
+    }
 }
-
 @mixin desktop-container {
-  padding-left: 175px/1600px * 100%;
-  padding-right: 175px/1600px * 100%;
+    padding-left: 175px/1600px * 100%;
+    padding-right: 175px/1600px * 100%;
+}
+@mixin viewport-height {
+    height: 100vh;
+    min-height: 770px;
+}
+@mixin parallax-deep($path) {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    @include viewport-height;
+    position: relative;
+    z-index: -1;
+    padding-top: 100px;
+    text-align: center;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        display: block;
+        min-height: 100vh;
+        background-color: #8a8;
+        background-image: url($path);
+        background-size: cover;
+        -webkit-transform-origin: center center 0;
+        -webkit-transform: translateZ(-300px) scale(2);
+        transform-origin: center center 0;
+        transform: translateZ(-300px) scale(2);
+    }
 }
 
-@mixin viewport-height {
-  height: 100vh;
-  min-height: 770px;
+@mixin iconed-heading($path) {
+  position: relative;
+  &::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      margin-left: -123px;
+      width: 247px;
+      height: 24px;
+      background: url($path) no-repeat;
+  }
 }

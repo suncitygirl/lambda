@@ -402,23 +402,6 @@ template {
 [hidden] {
   display: none; }
 
-.btn {
-  display: inline-block;
-  padding: 18px 50px;
-  cursor: pointer; }
-
-.heading--iconed {
-  position: relative; }
-
-.heading--iconed::after {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  margin-left: -123px;
-  width: 247px;
-  height: 24px; }
-
 .main-nav {
   position: absolute;
   z-index: 2;
@@ -426,8 +409,8 @@ template {
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   -ms-flex-align: start;
   align-items: flex-start;
   width: 100%;
@@ -436,16 +419,33 @@ template {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent); }
 
 .main-nav__logo {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   padding: 38px 0 46px 3px;
   font-family: "Yeseva One", Arial, sans-serif;
   font-size: 3.6rem;
   color: #fff;
   font-weight: 400;
   opacity: 0.9;
-  text-transform: uppercase;
-  text-shadow: 0.5px 0.9px 10px rgba(1, 1, 1, 0.84); }
+  text-transform: uppercase; }
+
+.main-nav__logo-text {
+  text-shadow: 0.5px 0.9px 10px rgba(0, 0, 0, 0.84);
+  transition: text-shadow 0.3s; }
+
+.main-nav__logo-text:hover {
+  text-shadow: 7px -7px 1px #000; }
 
 .main-nav__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-right: auto;
   -ms-flex-preferred-size: 60%;
   flex-basis: 60%;
   font-family: "Gentium Book Basic", Georgia, serif;
@@ -481,14 +481,35 @@ template {
   color: #d9d9d9; }
 
 .promo {
+  text-align: center; }
+
+.promo__parallax-deep {
+  transform-style: preserve-3d;
   height: 100vh;
   min-height: 770px;
   position: relative;
-  z-index: 1;
+  z-index: -1;
   padding-top: 100px;
-  background: url("../img/promo__background.png") no-repeat;
-  background-size: cover;
   text-align: center; }
+
+.promo__parallax-deep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  min-height: 100vh;
+  background-color: #8a8;
+  background-image: url("../img/promo__background.png");
+  background-size: cover;
+  -webkit-transform-origin: center center 0;
+  -webkit-transform: translateZ(-300px) scale(2);
+  -ms-transform-origin: center center 0;
+  transform-origin: center center 0;
+  transform: translateZ(-300px) scale(2); }
 
 .promo__slogan {
   position: absolute;
@@ -517,6 +538,7 @@ template {
 
 .promo__book-btn, .promo__menu-btn {
   position: absolute;
+  z-index: 100;
   bottom: 15%;
   border: solid 2px;
   font-family: "Lato", Arial, sans-serif;
@@ -527,14 +549,29 @@ template {
 
 .promo__book-btn {
   left: 32.5%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.62);
   border-color: #000; }
+
+.promo__book-btn:hover {
+  background-color: rgba(0, 0, 0, 0.75); }
+
+.promo__book-btn:active {
+  background-color: rgba(0, 0, 0, 0.5); }
 
 .promo__menu-btn {
   right: 32.5%;
   background-color: rgba(255, 255, 255, 0.28); }
 
+.promo__menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.45); }
+
+.promo__menu-btn:active {
+  background-color: rgba(255, 255, 255, 0.15); }
+
 .about {
+  position: relative;
+  z-index: 5;
+  background-color: #fff;
   height: 100vh;
   min-height: 770px;
   display: -ms-flexbox;
@@ -543,21 +580,42 @@ template {
   flex-direction: column;
   -ms-flex-pack: center;
   justify-content: center;
-  background: url("../img/about__dish.png") no-repeat 82% 60%, url("../img/pattern.png") repeat, linear-gradient(-43deg, rgba(1, 1, 1, 0.09) 0%, rgba(255, 255, 255, 0.09) 100%);
-  box-shadow: inset 0 0 50px rgba(1, 1, 1, 0.14); }
+  background-image: url("../img/pattern.png");
+  background-repeat: repeat;
+  border-top: solid #fff 6px;
+  border-bottom: solid #191919 6px; }
 
 .about__wrapper {
+  height: 100%;
+  min-height: 720px;
   width: 25.5625%;
   margin-left: 17.8125%;
   text-align: center; }
 
+.about__dish {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: auto; }
+
 .about__heading {
   font-family: "Yeseva One", Arial, sans-serif;
   font-size: 3.6rem;
-  color: #c90; }
+  color: #c90;
+  position: relative; }
 
 .about__heading::after {
-  background: url("../img/delimiter-2.png"); }
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
+  background: url("../img/delimiter-2.png") no-repeat; }
 
 .about__descr {
   margin-top: 55px;
@@ -569,14 +627,41 @@ template {
   margin-left: 20%; }
 
 .ingredients {
+  position: relative;
   height: 100vh;
   min-height: 770px;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  background: url("../img/ingredients__background.png");
-  background-size: cover; }
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  transform-style: preserve-3d;
+  height: 100vh;
+  min-height: 770px;
+  position: relative;
+  z-index: -1;
+  padding-top: 100px;
+  text-align: center; }
+
+.ingredients::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  min-height: 100vh;
+  background-color: #8a8;
+  background-image: url("../img/ingredients__background.png");
+  background-size: cover;
+  -webkit-transform-origin: center center 0;
+  -webkit-transform: translateZ(-300px) scale(2);
+  -ms-transform-origin: center center 0;
+  transform-origin: center center 0;
+  transform: translateZ(-300px) scale(2); }
 
 .ingredients__wrapper {
   display: -ms-flexbox;
@@ -587,6 +672,7 @@ template {
   justify-content: center;
   width: 35.625%;
   margin-left: 50.9375%;
+  margin-top: -1.5%;
   height: 80vh;
   text-align: center;
   font-family: "Lato", Arial, sans-serif;
@@ -595,21 +681,29 @@ template {
   background-size: cover; }
 
 .ingredients__heading {
-  font-size: 3.6rem; }
+  font-size: 3.6rem;
+  position: relative; }
 
 .ingredients__heading::after {
-  background: url("../img/delimiter-3.png"); }
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
+  background: url("../img/delimiter-3.png") no-repeat; }
 
 .ingredients__descr {
-  margin: 70px 14.03509% 5vh 14.03509%;
+  margin: 70px 14.03509% 5% 14.03509%;
   line-height: 2.4rem; }
 
 .ingredients__pics-wrapper {
-  margin: 0 14.03509%; }
+  margin: 0 7.01754%; }
 
 .ingredients__pic {
-  float: left;
-  margin-right: 5%; }
+  display: inline-block;
+  margin-right: 2%; }
 
 .ingredients__pic:last-child {
   margin-right: 0; }
@@ -617,6 +711,8 @@ template {
 .menu {
   height: 100vh;
   min-height: 770px;
+  position: relative;
+  z-index: 3;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -628,8 +724,11 @@ template {
   -ms-flex-pack: center;
   justify-content: center;
   padding: 0 8%;
-  background: url("../img/pattern-2.png") repeat, linear-gradient(134deg, rgba(32, 90, 91, 0.09) 0%, rgba(255, 255, 255, 0.09) 100%);
-  box-shadow: inset 0 0 50px rgba(1, 1, 1, 0.14); }
+  background-image: url("../img/pattern-2.png");
+  background-color: #fff;
+  background-repeat: repeat;
+  border-top: solid #fff 6px;
+  border-bottom: solid #191919 6px; }
 
 .menu__heading {
   margin-bottom: 50px;
@@ -637,10 +736,18 @@ template {
   font-family: "Yeseva One", Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 400;
-  color: #c90; }
+  color: #c90;
+  position: relative; }
 
 .menu__heading::after {
-  background: url("../img/delimiter-2.png"); }
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
+  background: url("../img/delimiter-2.png") no-repeat; }
 
 .menu__item {
   -ms-flex-preferred-size: 10%;
@@ -673,7 +780,7 @@ template {
   padding-bottom: 7px;
   margin-bottom: 7px; }
 
-.menu__info-wrapper:before, .menu__info-wrapper:after {
+.menu__info-wrapper:after, .menu__info-wrapper:before {
   content: " ";
   display: table; }
 
@@ -681,17 +788,43 @@ template {
   clear: both; }
 
 .reviews {
+  position: relative;
+  z-index: -1;
   height: 100vh;
   min-height: 770px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  background: url("../img/reviews__background.png") no-repeat;
-  background-size: cover; }
+  transform-style: preserve-3d;
+  height: 100vh;
+  min-height: 770px;
+  position: relative;
+  z-index: -1;
+  padding-top: 100px;
+  text-align: center; }
+
+.reviews::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  min-height: 100vh;
+  background-color: #8a8;
+  background-image: url("../img/reviews__background.png");
+  background-size: cover;
+  -webkit-transform-origin: center center 0;
+  -webkit-transform: translateZ(-300px) scale(2);
+  -ms-transform-origin: center center 0;
+  transform-origin: center center 0;
+  transform: translateZ(-300px) scale(2); }
 
 .reviews__wrapper {
-  margin: 0 25.9375%;
+  margin: -6.5% 25.9375% 0 25.9375%;
   padding: 82px 4.625% 103px 4.625%;
   background: url("../img/black-pattern.png");
   background-size: cover;
@@ -700,10 +833,18 @@ template {
 
 .reviews__heading {
   font-family: "Yeseva One", Arial, sans-serif;
-  font-size: 3.6rem; }
+  font-size: 3.6rem;
+  position: relative; }
 
 .reviews__heading::after {
-  background: url("../img/delimiter-3.png"); }
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
+  background: url("../img/delimiter-3.png") no-repeat; }
 
 .reviews__author {
   font-family: "Lato", Arial, sans-serif;
@@ -719,13 +860,30 @@ template {
 .reservations {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -ms-flex-align: center;
   align-items: center;
   height: 80vh;
   min-height: 720px;
-  background: url("../img/reservations__pic-1.png") no-repeat 13% 50%, url("../img/reservations__pic-2.png") no-repeat 38% 50%, url("../img/pattern.png") repeat, linear-gradient(-43deg, rgba(1, 1, 1, 0.09) 0%, rgba(255, 255, 255, 0.09) 100%); }
+  background-repeat: no-repeat;
+  background-image: url("../img/pattern.png");
+  background-color: #fff;
+  background-repeat: repeat;
+  border-top: solid #fff 6px; }
+
+.reservations__pics {
+  margin-left: 10%;
+  width: 40%;
+  margin-top: -1%; }
+
+.reservations__pic-1, .reservations__pic-2 {
+  display: inline-block;
+  width: 47%;
+  height: auto; }
+
+.reservations__pic-1 {
+  margin-right: 4%; }
 
 .reservations__wrapper {
   width: 28.75%;
@@ -738,9 +896,17 @@ template {
   margin-bottom: 70px;
   font-family: "Yeseva One", Arial, sans-serif;
   font-size: 3.6rem;
-  color: #c90; }
+  color: #c90;
+  position: relative; }
 
 .reservations__heading::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
   background: url("../img/delimiter-2.png") no-repeat; }
 
 .reservations__descr {
@@ -758,7 +924,14 @@ template {
   color: #fff;
   background-color: #c90;
   border: solid 1px #c90;
-  cursor: pointer; }
+  cursor: pointer;
+  outline: none; }
+
+.reservations__btn:hover {
+  background-color: #b38600; }
+
+.reservations__btn:active {
+  background-color: #e6ac00; }
 
 .reservations__form {
   position: relative;
@@ -818,10 +991,20 @@ template {
   margin-bottom: 63px;
   font-family: "Yeseva One", Arial, sans-serif;
   font-size: 2.1rem;
-  opacity: 0.7; }
+  opacity: 0.7;
+  position: relative; }
 
 .main-footer__heading::after {
-  background: url("../img/delimiter-3.png") no-repeat;
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  margin-left: -123px;
+  width: 247px;
+  height: 24px;
+  background: url("../img/delimiter-3.png") no-repeat; }
+
+.main-footer__heading::after {
   background-size: contain;
   bottom: -31px;
   margin-left: -95px;
@@ -842,13 +1025,18 @@ html {
   font-family: "Lato", Arial, sans-serif;
   font-size: 10px;
   box-sizing: border-box;
-  overflow-x: hidden; }
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 100%;
+  min-width: 1200px; }
 
 body {
   font-size: 1.6rem;
-  min-width: 320px; }
+  min-width: 320px;
+  height: 100%; }
 
-html, body {
+body,
+html {
   padding: 0;
   margin: 0; }
 
@@ -865,12 +1053,27 @@ ul {
   padding: 0;
   margin: 0; }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
   padding: 0; }
 
 img {
   max-width: 100%;
   height: auto; }
+
+.btn {
+  display: inline-block;
+  padding: 18px 3%; }
+
+.parallax {
+  height: 100%;
+  perspective: 300px;
+  transform-style: preserve-3d;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #191919;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 /*# sourceMappingURL=maps/style.css.map */

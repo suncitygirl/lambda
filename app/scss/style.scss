@@ -1,7 +1,6 @@
 @import "normalize";
 @import "helpers/mixins";
 @import "helpers/variables";
-@import "helpers/common-elements";
 @import "blocks/main-nav";
 @import "blocks/promo";
 @import "blocks/about";
@@ -10,46 +9,60 @@
 @import "blocks/reviews";
 @import "blocks/reservations";
 @import "blocks/main-footer";
-
 html {
-  font-family: $font-family--base;
-  font-size: $html-size-base;
-  box-sizing: border-box;
-  overflow-x: hidden;
+    font-family: $font-family--base;
+    font-size: $html-size-base;
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: 100%;
+    min-width: 1200px;
 }
-
 body {
-  font-size: $font-size;
-  min-width: 320px;
+    font-size: $font-size;
+    min-width: 320px;
+    height: 100%;
 }
-
-html, body {
-  padding: 0;
-  margin: 0;
+body,
+html {
+    padding: 0;
+    margin: 0;
 }
-
 * {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
-
 a {
-  text-decoration: none;
-  color: $black;
-  cursor: pointer;
+    text-decoration: none;
+    color: $black;
+    cursor: pointer;
 }
-
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-
-h1, h2 {
-  margin: 0;
-  padding: 0;
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
 }
-
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
+}
+.btn {
+    display: inline-block;
+    padding: 18px 3%;
+}
+.parallax {
+    height: 100%;
+    -webkit-perspective: 1px;
+    perspective: 300px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #191919;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

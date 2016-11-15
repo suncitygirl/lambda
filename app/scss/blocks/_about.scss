@@ -1,32 +1,43 @@
 .about {
-  @include viewport-height;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: url('../img/about__dish.png') no-repeat 82% 60%,
-              url('../img/pattern.png') repeat,
-              linear-gradient(-43deg, rgba(1, 1, 1, 0.09) 0%, rgba(255, 255, 255, 0.09) 100%);
-  box-shadow: inset 0 0 50px rgba(1, 1, 1, 0.14);
-  &__wrapper {
-    width: 409px/1600px * 100%;
-    margin-left: 285px/1600px * 100%;
-    text-align: center;
-  }
-  &__heading {
-    font-family: $font-family--yeseva;
-    font-size: $font-size--lg;
-    color: $yellow;
-    &::after {
-      background: url('../img/delimiter-2.png');
+    position: relative;
+    z-index: 5;
+    background-color: $white;
+    @include viewport-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('../img/pattern.png');
+    background-repeat: repeat;
+    border-top: solid $white 6px;
+    border-bottom: solid #191919 6px;
+    &__wrapper {
+        height: 100%;
+        min-height: 720px;
+        width: 409px/1600px * 100%;
+        margin-left: 285px/1600px * 100%;
+        text-align: center;
     }
-  }
-  &__descr {
-    margin-top: 55px;
-    font-family: $font-family--base;
-    line-height: 2.4rem;
-  }
-  &__sign {
-    margin-top: 52px;
-    margin-left: 20%;
-  }
+    &__dish {
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%);
+        height: auto;
+    }
+    &__heading {
+        font-family: $font-family--yeseva;
+        font-size: $font-size--lg;
+        color: $yellow;
+        @include iconed-heading('../img/delimiter-2.png');
+    }
+    &__descr {
+        margin-top: 55px;
+        font-family: $font-family--base;
+        line-height: 2.4rem;
+    }
+    &__sign {
+        margin-top: 52px;
+        margin-left: 20%;
+    }
 }

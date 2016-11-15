@@ -1,6 +1,8 @@
-var menu = document.getElementsByClassName('main-nav__list')[0];
 
-function Menu(elem) {
+var menu = document.getElementsByClassName('main-nav__list')[0];
+var promo = document.getElementsByClassName('promo')[0];
+
+function ScrollManager() {
 
     function clickHandler(event) {
         event.preventDefault();
@@ -11,22 +13,14 @@ function Menu(elem) {
     function scroll(clickedElem) {
         var scr = clickedElem.getAttribute('data-scroll');
         var elem = document.getElementsByClassName(scr)[0];
-        var coords = getCoords(elem);
-        console.log(coords.top);
-        window.scrollTo(0, coords.top, 'smooth');
+        elem.scrollIntoView({behavior: 'smooth'});
     }
-
-    function getCoords(elem) { // кроме IE8-
-        var box = elem.getBoundingClientRect();
-
-        return {
-            top: box.top + pageYOffset,
-            left: box.left + pageXOffset
-        };
-
-    }
-
-    elem.addEventListener('click', clickHandler);
+    console.log(arguments);
+    [].forEach.call(arguments, function(item) {
+      item.addEventListener('click', clickHandler);
+    });
 }
 
-new Menu(menu);
+document.addEventListener('DOMContentLoaded', function() {
+    new ScrollManager(menu, promo);
+});
